@@ -4,7 +4,7 @@ import random
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv("C:\Users\kjon5\repos\tweety-swiper\key.env")
 
 # Set up Twitter API authentication
 consumer_key = os.getenv('consumer_key')
@@ -22,17 +22,19 @@ openai.api_key = os.getenv('openai_api_key')
 
 # Define a list of prompts
 prompts = [
+    "This is a test!"
+    "Hello, World!"
 ]
 
 # Call the ChatGPT API using a random prompt from the list
 prompt = prompts[random.randint(0, len(prompts)-1)]
 response = openai.Completion.create(
     engine="text-davinci-003",
-    prompt=,
-    max_tokens=,
-    n=,
-    stop=,
-    temperature=,
+    prompt=prompt,
+    max_tokens=20,
+    n=1,
+    stop=None,
+    temperature=0.5,
 )
 
 # Extract the response from the API output
