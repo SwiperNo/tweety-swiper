@@ -4,7 +4,7 @@ import random
 import os
 from dotenv import load_dotenv
 
-load_dotenv("C:\Users\kjon5\repos\tweety-swiper\key.env")
+load_dotenv("C:\Users\kjon5\repos\tweety-swiper\.env")
 
 # Set up Twitter API authentication
 consumer_key = os.getenv('consumer_key')
