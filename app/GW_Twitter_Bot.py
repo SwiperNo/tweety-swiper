@@ -22,8 +22,8 @@ openai.api_key = os.getenv('openai_api_key')
 
 # Define a list of prompts
 prompts = [
-    "This is a test!"
-    "Hello, World!"
+    "This is a test!",
+    "Hello, World!",
 ]
 
 # Call the ChatGPT API using a random prompt from the list
@@ -41,7 +41,7 @@ response = openai.Completion.create(
 tweet_text = response.choices[0].text.strip()
 
 # Wait for user approval
-
+user_approval = ""
 while user_approval.upper() not in ["YES", "NO"]:
     user_approval = input("Did you approve the tweet and the image? (YES/NO): ")
 
