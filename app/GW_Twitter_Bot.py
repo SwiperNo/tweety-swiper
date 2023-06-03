@@ -11,7 +11,7 @@ consumer_key = os.getenv('consumer_key')
 consumer_secret = os.getenv('consumer_secret')
 access_token = os.getenv('access_token')
 access_token_secret = os.getenv('access_token_secret')
-#Missing OpenAPI Key
+#Missing OpenAPI Key -kj
 openai_api_key = os.getenv('openai_api_key')
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -22,12 +22,14 @@ api = tweepy.API(auth)
 # Set up OpenAI API authentication
 openai.api_key = os.getenv('openai_api_key')
 
+#Added prompts -kj
 # Define a list of prompts
 prompts = [
     "This is a test!",
     "Hello, World!",
 ]
 
+# Updated Response to include desired values and prompt -kj
 # Call the ChatGPT API using a random prompt from the list
 prompt = prompts[random.randint(0, len(prompts)-1)]
 response = openai.Completion.create(
@@ -42,6 +44,7 @@ response = openai.Completion.create(
 # Extract the response from the API output
 tweet_text = response.choices[0].text.strip()
 
+# Added the user_approval var -kj
 # Wait for user approval
 user_approval = ""
 while user_approval.upper() not in ["YES", "NO"]:
