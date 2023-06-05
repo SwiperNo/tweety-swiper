@@ -44,6 +44,8 @@ client = tweepy.Client(consumer_key='key',
 openai.api_key = os.getenv('OPENAI_API_KEY')
 #openai.api_key='sk-key'
 
+
+#sanity check for env variables
 #print(os.getenv('consumer_key'))
 #print(os.getenv('consumer_secret'))
 #print(os.getenv('access_token'))
