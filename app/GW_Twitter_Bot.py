@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 env_path = Path('C:\\Users\\kjon5\\repos\\tweety-swiper\\') / '.env'
 load_dotenv(dotenv_path=env_path)
-
+#load_dotenv()
 
 # Set up Twitter API authentication
 
@@ -16,31 +16,45 @@ consumer_secret = os.getenv('consumer_secret')
 access_token = os.getenv('access_token')
 access_token_secret = os.getenv('access_token_secret')
 
+#Issue with loading Env variables using this method
+#client = tweepy.Client(consumer_key,
+#                       consumer_secret,
+#                       access_token,
+#                       access_token_secret)
+
+#Hardcoded method - API v2 auth method
+client = tweepy.Client(consumer_key='key',
+                       consumer_secret='key',
+                       access_token='key',
+                       access_token_secret='key')
 
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+#Obsolete - this no longer works with v2
+#auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+#auth.set_access_token(access_token, access_token_secret)
 
-api = tweepy.API(auth)
+#obsolete method to auth - works with v1
+#api = tweepy.API(auth)
+
+#Latest v2 method
+#api = tweepy.Client(auth)
 
 
 # Set up OpenAI API authentication
 openai.api_key = os.getenv('OPENAI_API_KEY')
+#openai.api_key='sk-key'
 
-#print("I am here")
-#print(openai_api_key)
-#print(consumer_key)
-#print(consumer_secret)
-#print(access_token)
-#print(access_token_secret)
-#print("I end here")
-#
+#print(os.getenv('consumer_key'))
+#print(os.getenv('consumer_secret'))
+#print(os.getenv('access_token'))
+#print(os.getenv('access_token_secret'))
+
+
 
 #Added prompts -kj
 # Define a list of prompts
 prompts = [
-    "This is a test!",
-    "Hello, World!",
+    "This is a test!"
 ]
 
 # Updated Response to include desired values and prompt -kj
@@ -68,7 +82,8 @@ while user_approval.upper() not in ["YES", "NO"]:
 # Post the tweet and image if approved
 if user_approval.upper() == "YES":
     # Update the Twitter status with the image
-    api.update_status(tweet_text)
+    #api.update_status(status=tweet_text)
+    client.create_tweet(text=tweet_text)
     print("Tweet posted successfully!")
 else:
     print("Tweet not posted.")
